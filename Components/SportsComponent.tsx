@@ -47,7 +47,7 @@ export default function SportsComponent() {
             <h1 className='text-2xl font-semibold underline-offset-8 decoration-blue-700 underline m-6'>Sports</h1>
             <div className='flex flex-wrap justify-center my-4'>
                 {Data.map((e, i) => {
-                    return <div key={i} className='sm:w-[225px] max-sm:w-full flex items-center justify-between flex-col shadow-md p-2 m-2'>
+                    return <div key={i} className='dark:bg-[#3B3E47] sm:w-[225px] max-sm:w-full flex items-center justify-between flex-col shadow-md p-2 m-2 rounded-md'>
                         <div className='h-[370px] max-sm:w-full overflow-hidden shadow-md rounded'>
                             <Image
                                 src={e.imageUrl}
@@ -55,16 +55,16 @@ export default function SportsComponent() {
                                 className='object-cover w-full h-full max-sm:w-full'
                             />
                         </div>
-                        <div className='w-full'>
+                        <div className='w-full '>
                             <p className='my-3 px-1 font-medium'>{e.title}</p>
-                            <div className='bg-slate-100/55 flex items-center justify-between p-2 text-slate-500 text-sm'>
-                                <span className='text-left'>Total events <br /> <p className='text-black'>{e.totalEvents}</p></span>
-                                <span className='text-left'>Sport <br /> <p className='text-black'>{e.sport}</p></span>
+                            <div className='bg-slate-100/55 dark:bg-[#292B32]  flex items-center justify-between p-2 text-slate-500 text-sm'>
+                                <span className='text-left dark:text-slate-100/60'>Total events <br /> <p className='text-black dark:text-white'>{e.totalEvents}</p></span>
+                                <span className='text-left dark:text-slate-100/60'>Sport <br /> <p className='text-black dark:text-white'>{e.sport}</p></span>
                             </div>
                         </div>
                     </div>
                 })}
-                <Advertisment imageUrl={advertismentImage} title={'Advertisement title'} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium incidunt porro iusto eum quisquam modi quidem deleniti, nostrum esse.'} />
+                <Advertisment imageUrl={advertismentImage} title={'Advertisement title'} description={'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laudantium incidunt porro iusto eum quisquam modi quidem deleniti, nostrum esseadipisicing elit. Laudantium incidunt porro iusto eum.'} />
             </div>
 
             <div className='flex items-center justify-center my-4'>

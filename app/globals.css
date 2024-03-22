@@ -82,6 +82,7 @@
 
 #scrollbar::-webkit-scrollbar-track {
   background: whitesmoke;
+  border-radius: 10px;
 }
 
 #scrollbar::-webkit-scrollbar-thumb {
