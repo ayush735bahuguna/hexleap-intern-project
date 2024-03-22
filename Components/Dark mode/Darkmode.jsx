@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import './DarkMode.css'
 
 export default function Darkmode() {
-    const [selectedTheme, setSelectedTheme] = useState(localStorage.getItem("selectedTheme") || "light");
+    // const [selectedTheme, setSelectedTheme] = useState(localStorage.getItem("selectedTheme") || "light");
+    const [selectedTheme, setSelectedTheme] = useState("light");
     useEffect(() => {
         if (selectedTheme === "dark") {
             SetDarkMode();
@@ -17,11 +18,11 @@ export default function Darkmode() {
 
     const SetDarkMode = () => {
         document.querySelector("html").setAttribute('class', 'dark')
-        localStorage.setItem("selectedTheme", "dark")
+        // localStorage.setItem("selectedTheme", "dark")
     }
     const SetLightMode = () => {
         document.querySelector("html").setAttribute('class', 'light')
-        localStorage.setItem("selectedTheme", "light")
+        // localStorage.setItem("selectedTheme", "light")
     }
 
 
