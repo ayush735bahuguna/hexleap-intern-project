@@ -1,7 +1,9 @@
-import React from 'react'
+"use client"
+import React, { useRef } from 'react'
 import image1 from '../asset/two/1.jpeg'
 import image2 from '../asset/two/2.jpeg'
 import Image from 'next/image'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 export default function CollectionSpotlight() {
 
 
@@ -12,8 +14,24 @@ export default function CollectionSpotlight() {
         location: String,
         btnText: String
     }
+    const containerRef = useRef<HTMLDivElement>(null);
+    const slideRef = useRef<HTMLDivElement>(null);
 
     const Data: Array<ApiData> = [
+        {
+            imageUrl: image1,
+            title: 'Las Vegas Aviators',
+            time: 'Oct 15 | Sun | 4:30 PM',
+            location: 'Las Vegas Ballpark, Las Vegas, Nevada',
+            btnText: 'Take Flight Collection'
+        },
+        {
+            imageUrl: image2,
+            title: 'Sacramento River Cats',
+            time: 'Oct 15 | Sun | 4:30 PM',
+            location: 'Sutter Health Park, Sacramento, California',
+            btnText: 'Orange Collection'
+        },
         {
             imageUrl: image1,
             title: 'Las Vegas Aviators',
@@ -49,10 +67,30 @@ export default function CollectionSpotlight() {
             <h1 className='text-4xl font-semibold mb-4 text-center'>Collection Spotlight</h1>
             <p className='text-center max-w-[900px] mb-3 text-slate-600 dark:text-slate-300'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam facere ducimus harum molestiae possimus amet nostrum quidem sequi, a odio eum consectetur quis reprehenderit, deserunt tenetur eaque minus beatae. Cupiditate?</p>
 
-            <div id='scrollbar' className='flex md:w-[740px] max-md:w-full max-sm:mx-2 overflow-y-hidden overflow-x-scroll'>
+            <div className="flex gap-5 my-5">
+                <button className="text-5xl flex items-center justify-center bg-slate-200 rounded-full w-[45px] h-[45px] active:bg-slate-200/65 dark:bg-slate-500 dark:active:bg-slate-500/65" onClick={() => {
+                    const slideWidth = slideRef?.current?.clientWidth;
+                    const container = containerRef?.current;
+                    if (slideWidth !== undefined && container) {
+                        container.scrollLeft -= slideWidth;
+                    }
+                }}>
+                    <ArrowLeft />
+                </button>
+                <button className="text-5xl flex items-center justify-center bg-slate-200 rounded-full w-[45px] h-[45px] active:bg-slate-200/65  dark:bg-slate-500 dark:active:bg-slate-500/65" onClick={() => {
+                    const slideWidth = slideRef?.current?.clientWidth;
+                    const container = containerRef?.current;
+                    if (slideWidth !== undefined && container) {
+                        container.scrollLeft += slideWidth;
+                    }
+                }}>
+                    <ArrowRight />
+                </button>
+            </div>
 
+            <div id='scrollbar' ref={containerRef} className='flex-shrink-0 flex md:w-[740px] max-md:w-full max-sm:mx-2 overflow-y-hidden overflow-x-scroll'>
                 {Data.map((e, i) => {
-                    return <div key={i} className=' w-[230px] h-[600px] flex items-center justify-between flex-col shadow rounded-md p-1 pt-2 bg-white dark:bg-[#3B3E47] m-2 flex-shrink-0 relative'>
+                    return <div key={i} ref={slideRef} className='w-[230px] h-[600px] flex items-center justify-between flex-col shadow rounded-md p-1 pt-2 bg-white dark:bg-[#3B3E47] m-2 flex-shrink-0 relative'>
                         <div className='h-[370px] overflow-hidden shadow-md rounded'>
                             <Image
                                 src={e.imageUrl}
@@ -71,8 +109,8 @@ export default function CollectionSpotlight() {
                         <button className='w-full p-2 bg-black text-white text-base rounded-md mx-1'>{e.btnText}</button>
                     </div>
                 })}
-
             </div>
+
         </div>
     )
 }

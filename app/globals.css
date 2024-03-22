@@ -77,20 +77,10 @@
 }
 
 #scrollbar::-webkit-scrollbar {
-  height: 6px;
+  display: none;
 }
 
-#scrollbar::-webkit-scrollbar-track {
-  background: whitesmoke;
-  border-radius: 10px;
-}
 
-#scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: blue;
-}
-
-#scrollbar::-webkit-scrollbar-thumb:hover {
-  width: 1px;
-  background: skyblue;
+* {
+  scroll-behavior: smooth;
 }
